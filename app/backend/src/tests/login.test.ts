@@ -3,40 +3,39 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 import {login, user} from './Double/user.doubles';
-
 import { app } from '../app';
 import User from '../database/models/user';
-
 import { Response } from 'superagent';
-
 chai.use(chaiHttp);
-
 const { request, expect } = chai;
 
 //describe('', () => { it('',() => {}) }) - Exemplo de inicio de teste para usar em outros arquivos
 
 describe('User and Login', () => {
+  beforeEach(sinon.restore);
   // questão 02
-  describe('Acesso com dados válidos no Front-end' , () => {
-    it('A rota utilizada é do tipo POST',() => {
+  describe('Acesso com dados válidos no Front-end', () => {
+    
+    it('A rota utilizada é do tipo POST', async () => {
 
     })
 
-    it('É possivel fazer login com os dados informados',() => {
+    it('É possivel fazer login com os dados informados', async () => {
 
     })
 
-    it('A senha que existe no bando estão encriptadas',() => {
+    it('A senha que existe no bando estão encriptadas', async () => {
 
     })
 
-    it('Está retornando o status 200',() => {
+    it('Está retornando o status 200', async () => {
 
     })
   })
   // questão 04
   describe('Não terá o acesso sem informar e-mail', () => {
-    it('Login sem e-mail tem o retorno de bad request', () => {
+
+    it('Login sem e-mail tem o retorno de bad request',async () => {
 
     })
     it('Não tem o campo e-mail o retorno 400 , com a mensagem "All Fields must be filled" ', () => {
@@ -44,8 +43,10 @@ describe('User and Login', () => {
     })
   })
   // questão 06 
+  
   describe('Não terá o acesso sem informar senha', () => {
-    it('Login sem senha tem o retorno de bad request', () => {
+    
+    it('Login sem senha tem o retorno de bad request', async () => {
 
     })
     it('Não tem o campo "password" o retorno 400 , com a mensagem "All Fields must be filled" ', () => {
@@ -53,20 +54,22 @@ describe('User and Login', () => {
     })
   })
   // questão 08 
-  describe('Não terá acesso com um email inválido', () => { 
-    it('Login sem  email incorreto retornará status não-autorizado', () => {
+    describe('Não terá acesso com um email inválido', () => { 
+    
+    it('Login sem  email incorreto retornará status não-autorizado', async () => {
 
     })
-    it('Campo  "email" inválido o retorno 400 , com a mensagem "Incorrect email or password" ', () => {
+    it('Campo  "email" inválido o retorno 400 , com a mensagem "Incorrect email or password" ', async () => {
 
     })
   })
   // questão 10 
   describe('Não terá acesso com um senha inválida', () => {
-    it('Login sem  senha incorreto retornará status não-autorizado', () => {
+
+    it('Login sem  senha incorreto retornará status não-autorizado', async () => {
 
     })
-    it('Campo  "senha" inválido o retorno 400 , com a mensagem "Incorrect email or password" ', () => {
+    it('Campo  "senha" inválido o retorno 400 , com a mensagem "Incorrect email or password" ', async () => {
 
     })
   })
