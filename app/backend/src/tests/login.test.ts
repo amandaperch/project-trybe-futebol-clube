@@ -14,7 +14,7 @@ const { request, expect } = chai;
 
 describe('User and Login', () => {
   before(async () => {
-    sinon.stub(user, 'findOne').resolves(user.user as User)
+    sinon.stub(user, "findOne").resolves(user.user as User)
   })
   after(() => {
     (User.findOne as sinon.SinonStub).restore();
