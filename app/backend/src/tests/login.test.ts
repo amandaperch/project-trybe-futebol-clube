@@ -6,30 +6,27 @@ import {login, user} from './Double/user.doubles';
 import { app } from '../app';
 import User from '../database/models/user';
 import { Response } from 'superagent';
+import { isExpressionStatement } from 'typescript';
 chai.use(chaiHttp);
 const { request, expect } = chai;
 
 //describe('', () => { it('',() => {}) }) - Exemplo de inicio de teste para usar em outros arquivos
 
 describe('User and Login', () => {
-  beforeEach(sinon.restore);
+  before(async () => {
+    sinon.stub(user, 'findOne').resolves({id: 1, ...user} as User)
+  })
+  after(() => {
+    (User.findOne as sinon.SinonStub).restore();
+  })
   // questão 02
   describe('Acesso com dados válidos no Front-end', () => {
-    
+
     it('A rota utilizada é do tipo POST', async () => {
+      const response = await chai.request(app).post('/login').send(user);
 
-    })
-
-    it('É possivel fazer login com os dados informados', async () => {
-
-    })
-
-    it('A senha que existe no bando estão encriptadas', async () => {
-
-    })
-
-    it('Está retornando o status 200', async () => {
-
+      expect(response.status).to.equal(201);
+      expect(response.body).to.deep.equal(user);
     })
   })
   // questão 04
