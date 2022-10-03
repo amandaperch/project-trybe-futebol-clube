@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import * as bcrypt from 'bcryptjs';
 import LoginService from '../Service/login.service';
-import loginToken from '../Utils/tokenGenerate';
+import LoginToken from '../Utils/tokenGenerate';
 
 export default class LoginController {
   static async login(req: Request, res: Response) {
@@ -21,7 +21,12 @@ export default class LoginController {
       return res.status(401).json({ message: 'Incorrect email or password' });
     }
 
-    const tokenNew = await loginToken(email);
+    const tokenNew = await LoginToken(email);
     return res.status(200).json({ token: tokenNew });
+  }
+
+  static async loginValidate(req:Request, res:Response) {
+    const { role } = req.body.user;
+    return res.status(200).json({ role });
   }
 }
