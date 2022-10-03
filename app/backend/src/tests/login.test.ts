@@ -14,7 +14,7 @@ const { request, expect } = chai;
 
 describe('User and Login', () => {
   before(async () => {
-    sinon.stub(user, "findOne").resolves(user.user as User)
+    sinon.stub(User, "findOne").resolves(user.user as User)
   })
   after(() => {
     (User.findOne as sinon.SinonStub).restore();
@@ -64,9 +64,9 @@ describe('User and Login', () => {
       const response = await request(app).post('/login').send(login.errorPassword);
       expect(response).to.have.status(401);
       expect(response.body.message).to.equal('Incorrect email or password');
-})
-    })
   })
+    })
+});
   /**
    * Exemplo do uso de stubs com tipos
    */
@@ -96,4 +96,3 @@ describe('User and Login', () => {
   // it('Seu sub-teste', () => {
   //   expect(false).to.be.eq(true);
   // });
-});

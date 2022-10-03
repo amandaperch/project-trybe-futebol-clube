@@ -1,9 +1,9 @@
 import User from '../database/models/user';
 
-export default class loginService {
+export default class LoginService {
   static login = async (user: string) => {
-    const search = await User.findOne({ where: { email: user } });
-    if (!search) return false;
-    return search;
+    const searchUser = await User.findOne({ where: { email: user } });
+    if (!searchUser) return false;
+    return searchUser;
   };
 }
