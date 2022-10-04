@@ -25,7 +25,7 @@ export default class LoginController {
     return res.status(200).json({ token: tokenNew });
   }
 
-  static async loginValidate(req:Request, res:Response) {
+  static async loginValidate(req: Request, res: Response) {
     const { role } = req.body.user;
     return res.status(200).json({ role });
   }
