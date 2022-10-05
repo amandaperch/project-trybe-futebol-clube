@@ -16,7 +16,7 @@ Team.init({
   teamName: {
     type: STRING,
     allowNull: false,
-    field: 'teamName',
+    field: 'team_name',
   },
 }, {
   sequelize: db,

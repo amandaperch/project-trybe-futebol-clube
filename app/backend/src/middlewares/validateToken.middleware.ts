@@ -17,7 +17,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
 
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Token must be a valid token' });
+    return res.status(401).json({ message: 'Token must be a valid token' });
   }
 };
 
