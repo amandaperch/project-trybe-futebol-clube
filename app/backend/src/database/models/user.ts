@@ -22,7 +22,6 @@ User.init({
   },
   role: {
     type: STRING,
-    allowNull: false,
   },
   email: {
     type: STRING,
