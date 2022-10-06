@@ -40,4 +40,9 @@ export default class MatchesService {
     });
     return createMatch;
   };
+
+  static finish = async (id: number) => {
+    const finishMatch = await Matches.update({ inProgress: false }, { where: { id } });
+    return finishMatch;
+  };
 }

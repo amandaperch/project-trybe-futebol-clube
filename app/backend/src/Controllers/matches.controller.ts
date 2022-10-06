@@ -28,4 +28,10 @@ export default class MatchController {
     if (!result) return res.status(404).json({ message: 'There is no team with such id!' });
     return res.status(201).json(result);
   }
+
+  static async finish(req: Request, res: Response) {
+    const { id } = req.params;
+    await MatchesService.finish(Number(id));
+    return res.status(200).json({ message: 'finish' });
+  }
 }
