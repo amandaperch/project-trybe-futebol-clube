@@ -1,5 +1,7 @@
 import Matches from '../database/models/match';
 import Team from '../database/models/team';
+import TeamsService from './teams.service';
+import { Match } from '../interface/match.interface';
 
 export default class MatchesService {
   static getAll = async () => {
@@ -19,5 +21,23 @@ export default class MatchesService {
         { model: Team, as: 'teamAway', attributes: ['teamName'] },
       ] });
     return allTeams;
+  };
+
+  static create = async (match: Match) => {
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = match;
+
+    const homeTeamId = await TeamsService.findById(homeTeam.toString());
+    const awayTeamId = await TeamsService.findById(awayTeam.toString());
+
+    if (!homeTeamId || !awayTeamId) return null;
+
+    const createMatch = await Matches.create({
+      homeTeam,
+      homeTeamGoals,
+      awayTeam,
+      awayTeamGoals,
+      inProgress: true,
+    });
+    return createMatch;
   };
 }
