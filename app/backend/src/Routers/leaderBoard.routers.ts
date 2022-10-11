@@ -1,8 +1,8 @@
 import { Router } from 'express';
-// import LeaderBoardController from '../controllers/leaderboardController';
+import LeaderBoardController from '../Controllers/leaderBoard.controller';
 
 const router = Router();
 
-router.get('/leaderboard/home');
+router.get('/leaderboard/home', LeaderBoardController.leardeBoard);
 
 export default router;
