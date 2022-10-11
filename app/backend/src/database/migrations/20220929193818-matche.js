@@ -1,38 +1,36 @@
+'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("matches", {
+    await queryInterface.createTable('matches', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      homeTeam: {
+      home_team: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.INTEGER,
-        field: "home_team",
       },
-      homeTeamGoals: {
+      home_team_goals: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.INTEGER,
-        field: "home_team_goals",
       },
-      awayTeam: {
+      away_team: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.INTEGER,
-        field: "away_team",
       },
-      awayTeamGoals: {
+      away_team_goals: {
         type: Sequelize.INTEGER,
-        field: "away_team_goals",
+        allowNull: false,
       },
-      inProgress: {
+      in_progress: {
         type: Sequelize.BOOLEAN,
-        field: "in_progress",
+        allowNull: false,
       },
     });
   },
-  down: async (queryInterface) => {
-    await queryInterface.dropTable("matches");
-  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('matches');
+  }
 };

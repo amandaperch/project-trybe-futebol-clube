@@ -1,12 +1,14 @@
 import * as jwt from 'jsonwebtoken';
-import User from '../database/models/user';
+import { Login } from '../interface/login.interface';
 
-const tokenGenerate = async (payload: User) => {
+const senha = process.env.JWT_SECRET || '123456789';
+
+const tokenGenerate = async (userLogin: Login) => {
   const jwtSingOptions: jwt.SignOptions = {
     algorithm: 'HS256',
   };
 
-  const token = jwt.sign({ payload }, process.env.JWT_SECRET as string, jwtSingOptions);
+  const token = jwt.sign({ userData: userLogin }, senha, jwtSingOptions);
 
   return token;
 };

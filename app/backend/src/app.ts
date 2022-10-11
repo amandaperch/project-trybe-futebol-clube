@@ -25,6 +25,7 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+
     this.app.use(LoginRouter);
     this.app.use(TeamsRouter);
     this.app.use(MatchRouter);

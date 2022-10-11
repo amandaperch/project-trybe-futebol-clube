@@ -5,8 +5,11 @@ import validateToken from '../middlewares/validateToken.middleware';
 const router = Router();
 
 router.get('/matches', MatchesController.getAll);
+
 router.post('/matches', validateToken, MatchesController.create);
+
 router.patch('/matches/:id/finish', MatchesController.finish);
+
 router.patch('/matches/:id', MatchesController.update);
 
 export default router;
